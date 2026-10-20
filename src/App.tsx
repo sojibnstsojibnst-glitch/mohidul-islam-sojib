@@ -9,7 +9,6 @@ import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { ProfilePhotoProvider } from './context/ProfilePhotoContext';
-import { PhotoUploadModal } from './components/PhotoUploadModal';
 
 function AppLayout() {
   const { language } = useLanguage();
@@ -117,9 +116,6 @@ function AppLayout() {
 
       {/* Persistent Footer */}
       <Footer navigate={navigate} />
-
-      {/* Profile Photo Upload Modal */}
-      <PhotoUploadModal />
     </div>
   );
 }
