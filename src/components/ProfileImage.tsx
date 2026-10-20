@@ -13,7 +13,10 @@ const CANDIDATE_PATHS = [
   '/images/profile/mohidul-islam-sojib.webp',
   '/images/profile/mohidul-islam-sojib.jpeg',
   '/images/profile/mohidul-islam-sojib.jpg',
-  '/images/profile/mohidul-islam-sojib.png'
+  '/images/profile/mohidul-islam-sojib.png',
+  '/images/profile/WhatsApp Image 2026-10-18 at 10.26.58 PM.jpeg',
+  '/images/profile/profile.jpg',
+  '/images/profile/profile.png'
 ];
 
 export const ProfileImage: React.FC<ProfileImageProps> = ({
