@@ -34,29 +34,6 @@ export const ProfilePhotoProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
   });
 
-  // Auto-sync recovered localStorage photo to server disk at public/images/profile/mohidul-islam-sojib.jpg
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved && saved.startsWith('data:image')) {
-        fetch('/api/save-profile-photo', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ dataUrl: saved })
-        })
-          .then((res) => res.json())
-          .then((resData) => {
-            if (resData?.success) {
-              console.log('Original photo preserved to public/images/profile/mohidul-islam-sojib.jpg');
-            }
-          })
-          .catch(() => {});
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
-
   // Check if default disk image exists if no custom photo saved
   useEffect(() => {
     if (!photoUrl) {
@@ -81,7 +58,7 @@ export const ProfilePhotoProvider: React.FC<{ children: React.ReactNode }> = ({ 
         isCancelled = true;
       };
     }
-  }, [hasCustomPhoto]);
+  }, [hasCustomPhoto, photoUrl]);
 
   return (
     <ProfilePhotoContext.Provider

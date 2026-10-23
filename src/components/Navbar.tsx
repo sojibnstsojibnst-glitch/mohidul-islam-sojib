@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Camera } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_DATA } from '../data/portfolioData';
 import { useLanguage } from '../context/LanguageContext';
-import { useProfilePhoto } from '../context/ProfilePhotoContext';
 import { ProfileImage } from './ProfileImage';
 import { LanguageSelector } from './LanguageSelector';
 
@@ -14,8 +13,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t, language } = useLanguage();
-  const { openUploadModal } = useProfilePhoto();
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,27 +88,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
             })}
           </nav>
 
-          {/* Zone 3: Actions (Upload Photo, Language Selector & Hire Me CTA) */}
-          <div className="hidden md:flex items-center gap-2.5 shrink-0">
-            <button
-              type="button"
-              onClick={openUploadModal}
-              title={
-                language === 'bn'
-                  ? 'ছবি আপলোড করুন'
-                  : language === 'bng'
-                  ? 'Chobi Upload Korun'
-                  : 'Upload Photo'
-              }
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#AAB4C8] hover:text-white bg-[#111827] hover:bg-white/5 border border-white/10 hover:border-[#00D2FF]/40 rounded-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00D2FF]"
-              aria-label="Upload photo"
-            >
-              <Camera className="w-3.5 h-3.5 text-[#00D2FF]" />
-              <span className="hidden xl:inline">
-                {language === 'bn' ? 'ছবি আপলোড' : language === 'bng' ? 'Upload Photo' : 'Upload Photo'}
-              </span>
-            </button>
-
+          {/* Zone 3: Actions (Language Selector & Hire Me CTA) */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
             <LanguageSelector variant="navbar" />
 
             <a
@@ -125,15 +104,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
 
           {/* Mobile menu trigger */}
           <div className="flex md:hidden items-center gap-2">
-            <button
-              type="button"
-              onClick={openUploadModal}
-              title="Upload photo"
-              className="p-2 text-[#AAB4C8] hover:text-white bg-[#111827] border border-white/10 rounded-lg"
-              aria-label="Upload photo"
-            >
-              <Camera className="w-4 h-4 text-[#00D2FF]" />
-            </button>
             <LanguageSelector variant="navbar" />
             <button
               type="button"
@@ -152,32 +122,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, navigate }) => {
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-[#00D2FF]/20 bg-[#0D1117] px-4 pt-3 pb-6 space-y-4">
           {/* Profile overview in drawer */}
-          <div className="flex items-center justify-between pb-3 border-b border-white/10">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full overflow-hidden border border-[#00D2FF]/40 bg-[#111827]">
-                <ProfileImage
-                  variant="thumbnail"
-                  className="w-full h-full object-cover object-[35%_25%]"
-                />
-              </div>
-              <div>
-                <p className="text-sm font-bold text-white">{PERSONAL_DATA.fullName}</p>
-                <p className="text-[11px] text-[#00D2FF]">{t.hero.subheadline}</p>
-              </div>
+          <div className="flex items-center gap-2.5 pb-3 border-b border-white/10">
+            <div className="w-9 h-9 rounded-full overflow-hidden border border-[#00D2FF]/40 bg-[#111827]">
+              <ProfileImage
+                variant="thumbnail"
+                className="w-full h-full object-cover object-[35%_25%]"
+              />
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openUploadModal();
-              }}
-              className="px-2.5 py-1.5 rounded-lg bg-[#111827] text-[#00D2FF] hover:text-white border border-[#00D2FF]/30 text-xs flex items-center gap-1.5"
-            >
-              <Camera className="w-3.5 h-3.5" />
-              <span>
-                {language === 'bn' ? 'ছবি আপলোড' : language === 'bng' ? 'Upload Photo' : 'Upload'}
-              </span>
-            </button>
+            <div>
+              <p className="text-sm font-bold text-white">{PERSONAL_DATA.fullName}</p>
+              <p className="text-[11px] text-[#00D2FF]">{t.hero.subheadline}</p>
+            </div>
           </div>
 
           <div className="flex flex-col space-y-1">
