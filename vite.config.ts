@@ -78,11 +78,23 @@ export default defineConfig(() => {
             res.end();
           });
         }
+      },
+      {
+        name: 'sync-build-output-dir',
+        closeBundle() {
+          try {
+            if (fs.existsSync('dist')) {
+              fs.cpSync('dist', 'disk', { recursive: true });
+            }
+          } catch (err) {
+            console.error('Failed to sync dist to disk:', err);
+          }
+        }
       }
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname || '.'),
       },
     },
     server: {
