@@ -12,6 +12,17 @@ export default defineConfig(() => {
       {
         name: 'save-profile-photo-endpoint',
         configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url && (req.url === '/googleb3a933d3bc23f491.html' || req.url.startsWith('/googleb3a933d3bc23f491.html?'))) {
+              res.writeHead(200, {
+                'Content-Type': 'text/html; charset=utf-8',
+                'Content-Length': '53'
+              });
+              res.end('google-site-verification: googleb3a933d3bc23f491.html');
+              return;
+            }
+            next();
+          });
           server.middlewares.use('/api/save-profile-photo', (req, res) => {
             if (req.method === 'POST') {
               let body = '';
