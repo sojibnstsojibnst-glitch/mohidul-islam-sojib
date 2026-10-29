@@ -80,6 +80,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             <img
               src={project.thumbnail}
               alt={displayTitle}
+              width={800}
+              height={450}
+              decoding="async"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
               loading="lazy"

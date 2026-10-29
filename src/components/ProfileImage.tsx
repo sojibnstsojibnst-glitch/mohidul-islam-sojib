@@ -69,17 +69,22 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({
     );
   }
 
+  const intrinsicWidth = width || (variant === 'hero' ? 600 : variant === 'about' ? 400 : 48);
+  const intrinsicHeight = height || (variant === 'hero' ? 600 : variant === 'about' ? 400 : 48);
+
   return (
     <div className="relative w-full h-full">
       <img
         src={activeSrc}
         alt={PERSONAL_DATA.portraitAlt}
-        width={width}
-        height={height}
+        width={intrinsicWidth}
+        height={intrinsicHeight}
         className={className}
         onError={handleError}
         referrerPolicy="no-referrer"
         loading={variant === 'hero' ? 'eager' : 'lazy'}
+        decoding={variant === 'hero' ? 'sync' : 'async'}
+        {...(variant === 'hero' ? { fetchPriority: 'high' } : {})}
       />
     </div>
   );
