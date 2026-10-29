@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://sojibmarketing.pages.dev/sitemap.xml
+Sitemap: https://mohidul-islam-sojib11.pages.dev/sitemap.xml

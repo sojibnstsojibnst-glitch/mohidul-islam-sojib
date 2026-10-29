@@ -16,7 +16,7 @@ interface PageSEOConfig {
   breadcrumbNameBn?: string;
 }
 
-const PRODUCTION_DOMAIN = 'https://sojibmarketing.pages.dev';
+const PRODUCTION_DOMAIN = 'https://mohidul-islam-sojib11.pages.dev';
 
 const SEO_CONFIGS: Record<string, PageSEOConfig> = {
   '/': {

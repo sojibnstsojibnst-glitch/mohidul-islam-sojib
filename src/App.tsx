@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { PortfolioPage } from './pages/PortfolioPage';
-import { ContactPage } from './pages/ContactPage';
-import { NotFoundPage } from './pages/NotFoundPage';
 import { SEOHead } from './components/SEOHead';
 import { LanguageProvider } from './context/LanguageContext';
 import { ProfilePhotoProvider } from './context/ProfilePhotoContext';
+
+// Lazy load non-landing routes to reduce initial JS payload and main-thread execution on mobile
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage').then(m => ({ default: m.PortfolioPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 function AppLayout() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -61,9 +63,17 @@ function AppLayout() {
       {/* Top Navbar */}
       <Navbar currentPath={currentPath} navigate={navigate} />
 
-      {/* Main Page Body */}
+      {/* Main Page Body with Suspense for Route-Level Code Splitting */}
       <main className="flex-1 w-full">
-        {renderCurrentPage()}
+        <Suspense
+          fallback={
+            <div className="min-h-[50vh] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full border-2 border-[#00D2FF] border-t-transparent animate-spin" />
+            </div>
+          }
+        >
+          {renderCurrentPage()}
+        </Suspense>
       </main>
 
       {/* Persistent Footer */}

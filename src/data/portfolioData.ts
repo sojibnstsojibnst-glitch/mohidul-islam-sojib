@@ -411,7 +411,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       '12 modular ad creative variations',
       'Custom performance reporting dashboard'
     ],
-    thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.jpg',
+    thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.webp',
     featured: true
   },
   {
@@ -433,7 +433,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Negative keyword exclusion hierarchy',
       'GTM lead form conversion tag configuration'
     ],
-    thumbnail: '/images/portfolio/portfolio_google_search_1792339115890.jpg',
+    thumbnail: '/images/portfolio/portfolio_google_search_1792339115890.webp',
     featured: true
   },
   {
@@ -455,7 +455,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Cross-platform audience exclusions',
       'Bi-weekly performance audit and recommendations'
     ],
-    thumbnail: '/images/portfolio/portfolio_ecommerce_growth_1792339116347.jpg',
+    thumbnail: '/images/portfolio/portfolio_ecommerce_growth_1792339116347.webp',
     featured: true
   },
   {
@@ -477,7 +477,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Hook retention analysis report',
       'Reusable creative production checklist'
     ],
-    thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.jpg',
+    thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.webp',
     featured: true
   },
   {
@@ -499,7 +499,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Brand sentiment & engagement report',
       'Follow-up conversion campaign sequence'
     ],
-    thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.jpg',
+    thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.webp',
     featured: false
   },
   {
@@ -521,7 +521,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Instant inquiry routing integration',
       'Brand consistency checklist'
     ],
-    thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.jpg',
+    thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.webp',
     featured: false
   }
 ];

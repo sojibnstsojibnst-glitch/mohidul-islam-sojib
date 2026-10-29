@@ -84,6 +84,7 @@ export default defineConfig(() => {
         closeBundle() {
           try {
             if (fs.existsSync('dist')) {
+              fs.rmSync('disk', { recursive: true, force: true });
               fs.cpSync('dist', 'disk', { recursive: true });
             }
           } catch (err) {
@@ -96,6 +97,19 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve(import.meta.dirname || '.'),
       },
+    },
+    build: {
+      target: 'es2020',
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+              return 'react-core';
+            }
+          }
+        }
+      }
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
