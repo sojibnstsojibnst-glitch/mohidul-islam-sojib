@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { SEOHead } from './components/SEOHead';
 import { LanguageProvider } from './context/LanguageContext';
 import { ProfilePhotoProvider } from './context/ProfilePhotoContext';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 // Lazy load non-landing routes to reduce initial JS payload and main-thread execution on mobile
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
@@ -84,10 +85,12 @@ function AppLayout() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ProfilePhotoProvider>
-        <AppLayout />
-      </ProfilePhotoProvider>
-    </LanguageProvider>
+    <ErrorBoundary>
+      <LanguageProvider>
+        <ProfilePhotoProvider>
+          <AppLayout />
+        </ProfilePhotoProvider>
+      </LanguageProvider>
+    </ErrorBoundary>
   );
 }

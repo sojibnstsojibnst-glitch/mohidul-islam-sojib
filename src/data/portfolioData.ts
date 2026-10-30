@@ -3,7 +3,7 @@
  * Head of Performance Marketing & Strategy at Boosting Agency BD
  * 
  * Note: All biographical information, contact details, services,
- * and portfolio items are managed here for easy updates.
+ * and portfolio items are managed here for permanent static storage.
  */
 
 export interface SkillItem {
@@ -29,19 +29,24 @@ export interface PortfolioProject {
   id: string;
   title: string;
   category:
-    | 'Meta Ads Campaigns'
+    | 'Meta Ads'
     | 'Google Ads'
-    | 'Social Media Marketing'
-    | 'Ad Creative Strategy'
     | 'E-commerce Marketing'
-    | 'Digital Brand Promotion';
+    | 'Campaign Strategy'
+    | 'Social Media Marketing'
+    | string;
+  description: string;
   objective: string;
+  role: string;
+  tools: string[];
   strategy: string;
-  executionDetails: string[];
+  features: string[];
   resultsNote: string;
   deliverables: string[];
   thumbnail: string;
   featured: boolean;
+  liveUrl?: string;
+  executionDetails?: string[];
 }
 
 export interface WorkingStep {
@@ -108,300 +113,222 @@ export const PROFESSIONAL_SKILLS: SkillItem[] = [
     name: 'Performance Marketing',
     category: 'core',
     description: 'Directing data-driven advertising campaigns with clear ROI objectives, structured budget pacing, and conversion benchmarks.',
-    keyPillars: ['CPA / CAC Optimization', 'Budget Pacing', 'Funnel Alignment']
+    keyPillars: ['CBO & ABO Account Structures', 'Target CPA & ROAS Bidding', 'Funnel Stage Attribution', 'Audience Fatigue Monitoring']
   },
   {
-    id: 'meta-ads-mgmt',
+    id: 'meta-ads',
     name: 'Meta Ads Management',
     category: 'advertising',
-    description: 'End-to-end management of Meta Business Suite, campaign structures (CBO/ABO), bid strategies, and audience segmentation.',
-    keyPillars: ['Meta Ads Manager', 'Custom Audiences', 'Advantage+ Campaigns']
-  },
-  {
-    id: 'facebook-ads',
-    name: 'Facebook Advertising',
-    category: 'advertising',
-    description: 'Targeted feed, video, and carousel ad campaigns tailored to consumer engagement behaviors across diverse demographic cohorts.',
-    keyPillars: ['Newsfeed Optimization', 'Video Views', 'Lead Generation Forms']
-  },
-  {
-    id: 'instagram-ads',
-    name: 'Instagram Advertising',
-    category: 'advertising',
-    description: 'High-retention visual storytelling via Instagram Stories, Reels, and Explore placements tailored to modern mobile consumption.',
-    keyPillars: ['Reels Format Ads', 'Story Tap Sequences', 'Visual Commerce']
+    description: 'Constructing high-converting Facebook and Instagram ad systems powered by behavioral audience modeling and creative testing.',
+    keyPillars: ['Advantage+ Shopping Campaigns', 'Custom & Lookalike Audiences', 'Meta Conversions API (CAPI)', 'Dynamic Product Ads (DPA)']
   },
   {
     id: 'google-ads',
-    name: 'Google Ads',
+    name: 'Google Ads & Search Marketing',
     category: 'advertising',
-    description: 'Capturing high commercial search intent through Google Search campaigns, structured ad groups, and Performance Max setups.',
-    keyPillars: ['Search Intent Keywords', 'PMax Campaigns', 'Negative Keyword Lists']
+    description: 'Capturing intent-rich search traffic through tightly grouped keywords, compelling copy, and disciplined bid management.',
+    keyPillars: ['Search Intent Clustering', 'Performance Max (PMax)', 'Negative Keyword Sculpting', 'Google Tag Manager (GTM)']
   },
   {
     id: 'audience-research',
-    name: 'Audience Research and Targeting',
+    name: 'Audience Research & Targeting',
     category: 'core',
-    description: 'Systematic audience persona mapping, interest layering, lookalike cohort generation, and competitor market research.',
-    keyPillars: ['Buyer Personas', 'Lookalike Modeling', 'Audience Overlap Control']
+    description: 'Translating consumer psychology into granular segmentation across demographics, purchase intent, and brand affinity.',
+    keyPillars: ['Customer Persona Mapping', 'Competitor Audience Analysis', 'Engagement Retargeting Pools', 'Lifecycle Cohort Segmentation']
   },
   {
     id: 'campaign-strategy',
-    name: 'Campaign Strategy and Planning',
+    name: 'Campaign Strategy & Planning',
     category: 'core',
-    description: 'Holistic planning across seasonal promotions, product launches, offer positioning, and multi-tier ad architectures.',
-    keyPillars: ['TOFU/MOFU/BOFU Funnels', 'Offer Positioning', 'Flight Schedules']
-  },
-  {
-    id: 'ad-copywriting',
-    name: 'Advertising Copywriting',
-    category: 'creative',
-    description: 'Crafting persuasive, benefit-oriented ad headlines, primary text hooks, and calls-to-action that resonate with target buyers.',
-    keyPillars: ['Hook Variations', 'Value Proposition Clarity', 'CTA Testing']
-  },
-  {
-    id: 'creative-strategy',
-    name: 'Creative Strategy',
-    category: 'creative',
-    description: 'Translating brand propositions into high-converting visual concepts, video briefs, static ad angles, and dynamic assets.',
-    keyPillars: ['Creative Matrix Planning', 'Hook Rate Analysis', 'Visual Storyboarding']
+    description: 'Architecting multi-channel promotional roadmaps that align ad creative, landing pages, and conversion offers.',
+    keyPillars: ['Offer Positioning & Angles', 'Product Launch Sequencing', 'Seasonal Promotional Calendars', 'Budget Allocation Modeling']
   },
   {
     id: 'conversion-tracking',
-    name: 'Conversion Tracking',
+    name: 'Conversion Tracking & Web Analytics',
     category: 'technical',
-    description: 'Configuring Meta Pixel, Conversions API (CAPI), Google Tag Manager, and GA4 custom events for reliable data capture.',
-    keyPillars: ['Meta Conversions API', 'Google Tag Manager', 'Custom Event Triggers']
+    description: 'Establishing robust tracking foundations to ensure every impression, click, lead, and sale is accurately attributed.',
+    keyPillars: ['GA4 Event Configuration', 'Server-Side Event Tracking', 'UTM Parameter Architecture', 'E-commerce Purchase Tracking']
   },
   {
-    id: 'analytics-optimization',
-    name: 'Campaign Analytics and Optimization',
-    category: 'technical',
-    description: 'Analyzing CTR, CPC, CPA, ROAS, and frequency metrics to execute surgical weekly budget adjustments and ad refreshes.',
-    keyPillars: ['ROAS Attribution', 'Frequency Governance', 'Ad Fatigue Prevention']
+    id: 'creative-strategy',
+    name: 'Ad Creative Strategy & Hook Testing',
+    category: 'creative',
+    description: 'Developing iterative visual concepts, compelling ad copywriting, and thumb-stopping hooks designed to arrest attention.',
+    keyPillars: ['3-Second Hook Architecture', 'Video Storyboard Briefing', 'Format Adaptation (1:1, 9:16)', 'Angle & Benefit Testing']
   },
   {
-    id: 'ai-automation',
-    name: 'AI-Powered Workflow Automation',
-    category: 'technical',
-    description: 'Integrating modern AI tooling to accelerate market research, ad copy variant generation, and creative testing matrix workflows.',
-    keyPillars: ['Rapid Copy Iteration', 'Audience Concepting', 'Workflow Streamlining']
+    id: 'brand-promotion',
+    name: 'Digital Brand Promotion',
+    category: 'creative',
+    description: 'Amplifying market credibility and brand resonance through strategic content syndication and multi-touchpoint awareness.',
+    keyPillars: ['Authority Content Packaging', 'Social Proof Integration', 'Omnichannel Message Alignment', 'Organic-to-Paid Amplification']
   },
   {
-    id: 'brand-development',
-    name: 'Digital Brand Development',
+    id: 'client-communication',
+    name: 'Transparent Client Communication',
     category: 'core',
-    description: 'Building cohesive visual and messaging standards across digital touchpoints to elevate long-term brand equity.',
-    keyPillars: ['Digital Consistency', 'Trust Architecture', 'Authority Building']
+    description: 'Delivering clear, honest reporting on campaign health, actionable recommendations, and realistic performance expectations.',
+    keyPillars: ['Regular Performance Reviews', 'No Fabricated Metrics', 'Budget Stewardship', 'Collaborative Goal Alignment']
+  },
+  {
+    id: 'workflow-automation',
+    name: 'Marketing Workflow Automation',
+    category: 'technical',
+    description: 'Streamlining campaign monitoring, reporting alerts, and audience updates to maximize operational efficiency.',
+    keyPillars: ['Automated Lead Notifications', 'Scheduled Reporting Triggers', 'Ad Alert Thresholds', 'Briefing Template Standardization']
   }
 ];
 
 export const SERVICES_LIST: ServiceItem[] = [
   {
-    id: 'meta-fb-insta-ads',
-    title: 'Facebook and Instagram Ads',
-    shortDescription: 'Scalable paid social advertising campaigns designed to generate qualified leads and e-commerce conversions.',
-    fullDescription: 'Comprehensive campaign management across Facebook and Instagram feeds, Stories, and Reels. Every campaign is engineered with audience testing matrices, demographic targeting, and creative variation to maximize ad engagement and return on ad spend.',
+    id: 'meta-ads-management',
+    title: 'Meta Ads Management (Facebook & Instagram)',
+    shortDescription: 'Full-cycle campaign management designed to acquire customers efficiently across Facebook and Instagram.',
+    fullDescription: 'From account restructuring to daily bid management, I build disciplined Meta advertising systems tailored to your customer buying cycle. Using a combination of Advantage+ Shopping, custom audiences, and structured creative iteration, your ad budget is directed where it produces measurable business value.',
     benefits: [
-      'Targeted reach among verified demographic and interest cohorts',
-      'Continuous A/B testing of creative formats and copy hooks',
-      'Proactive frequency management to eliminate ad fatigue',
-      'Transparent weekly performance reporting and strategic recommendations'
+      'Eliminate wasted ad spend through proper negative audiences and structured account hierarchy',
+      'Continuous creative testing to prevent ad fatigue and rising customer acquisition costs',
+      'Transparent weekly reporting with clear attribution on leads and revenue'
     ],
     deliverables: [
-      'Campaign objective alignment and structure design',
-      'Target audience setup (Custom, Lookalike, & Interest)',
-      'Ad creative recommendations and format planning',
-      'Ongoing bid adjustments and budget optimization'
+      'Comprehensive ad account audit and restructuring',
+      'Custom audience segmentation and lookalike modeling',
+      'Campaign setup (prospecting, retargeting, dynamic catalog)',
+      'A/B creative and copy testing schedule',
+      'Weekly performance summaries and strategic recommendations'
     ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I am interested in discussing your Facebook and Instagram Ads service.',
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I am interested in Meta Ads Management for my business.',
     iconName: 'Share2'
   },
   {
-    id: 'meta-campaign-setup',
-    title: 'Meta Ads Campaign Setup',
-    shortDescription: 'Clean, professional architectural setup of your Meta Business Manager, ad accounts, pixels, and campaign hierarchy.',
-    fullDescription: 'Avoid costly misconfigurations with a pristine foundation. From domain verification and aggregated event measurement to custom conversion setup and structured ABO/CBO campaigns, your Meta ad account is prepared for sustained growth.',
+    id: 'google-ads-campaigns',
+    title: 'Google Ads & Search Campaign Setup',
+    shortDescription: 'Intent-driven search and Performance Max campaigns that capture customers at the moment of high intent.',
+    fullDescription: 'Capture customers actively searching for your products or services. I configure tightly structured keyword ad groups, write conversion-focused ad copy, enforce negative keyword exclusions, and implement conversion tracking so Google’s algorithms optimize toward real revenue.',
     benefits: [
-      'Flawless structural alignment compliant with Meta advertising policies',
-      'Clean event tracking pipeline ready for algorithm learning',
-      'Streamlined campaign hierarchy for easy scaling and tracking'
+      'Capture qualified prospects at the exact moment they are looking for solutions',
+      'Filter out non-converting search queries with extensive negative keyword lists',
+      'Full visibility into search terms, click costs, and conversion actions'
     ],
     deliverables: [
-      'Business Manager & Ad Account verification audit',
-      'Pixel & Conversions API integration verification',
-      'Custom audience and conversion rules configuration',
-      'Initial cold and warm campaign structure rollout'
+      'Keyword research and competitor search volume analysis',
+      'Search campaign structure (Exact, Phrase, Broad-Match testing)',
+      'Responsive Search Ads (RSAs) copywriting and asset extensions',
+      'Performance Max (PMax) campaign configuration with feed integration',
+      'Negative keyword list implementation and weekly hygiene'
     ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I would like to consult on setting up my Meta Ads Campaign infrastructure.',
-    iconName: 'Settings'
-  },
-  {
-    id: 'google-ads-management',
-    title: 'Google Ads Campaign Management',
-    shortDescription: 'High-intent search and multi-channel Google advertising capturing active customers seeking your solutions.',
-    fullDescription: 'Capture bottom-of-funnel commercial demand with precisely orchestrated Google Search, Display, and Performance Max campaigns. We curate targeted keyword clusters, negative keyword safeguards, and compelling responsive search ads.',
-    benefits: [
-      'Direct capture of high-intent search queries',
-      'Elimination of wasted ad spend via negative keyword lists',
-      'Continuous Quality Score optimization to reduce CPC',
-      'Clear tracking from search term to recorded conversion'
-    ],
-    deliverables: [
-      'Comprehensive keyword intent research and grouping',
-      'Responsive Search Ad (RSA) copywriting and headline variants',
-      'Negative keyword list architecture and ongoing hygiene',
-      'Bid strategy management (Target CPA / Maximize Conversions)'
-    ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I want to discuss Google Ads Campaign Management for my business.',
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I want to discuss Google Ads campaigns for my company.',
     iconName: 'Search'
   },
   {
     id: 'audience-research-targeting',
-    title: 'Audience Research and Targeting',
-    shortDescription: 'In-depth market research, customer avatar creation, and precise segmentation to find your highest-value prospects.',
-    fullDescription: 'Stop guessing who your buyers are. We analyze industry benchmarks, competitor footprints, and demographic data to build concrete audience profiles, intent segments, and custom audience recipes that convert.',
+    title: 'Audience Research & Strategic Targeting',
+    shortDescription: 'Deep analysis of customer personas, intent triggers, and competitor positioning to direct marketing spend.',
+    fullDescription: 'Before spending on advertising, you must know exactly who is buying and why. I conduct structured audience research to uncover target demographics, purchase motivators, competitor brand affinities, and behavioral patterns that translate directly into high-performing targeting parameters.',
     benefits: [
-      'Reduced cost per acquisition through pinpoint audience focus',
-      'Clear customer persona documentation for all marketing touchpoints',
-      'Strategic lookalike seed audience compilation'
+      'Stop guessing targeting parameters and reach genuine decision-makers',
+      'Uncover overlooked audience segments that competitors are not targeting',
+      'Provide clear messaging directions based on actual consumer pain points'
     ],
     deliverables: [
-      'Detailed Customer Avatar & Buyer Persona document',
-      'Competitor audience research and positioning report',
-      'Meta & Google audience segment mapping guide',
-      'Audience exclusion and overlap prevention checklist'
+      'Customer persona documentation (demographics, pain points, triggers)',
+      'Competitor audience presence and advertising angle breakdown',
+      'Ad platform targeting specification sheet (Meta & Google)',
+      'Custom audience retargeting roadmap for the customer journey'
     ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I need audience research and targeting strategy for my brand.',
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I need an Audience Research & Targeting strategy.',
     iconName: 'Users'
   },
   {
-    id: 'digital-marketing-strategy',
-    title: 'Digital Marketing Strategy',
-    shortDescription: 'Holistic multi-channel marketing roadmaps designed to turn business goals into actionable execution steps.',
-    fullDescription: 'A custom, full-funnel digital strategy tailored to your industry, budget, and competitive landscape. We map customer journey stages from initial touchpoint to purchase and post-purchase loyalty.',
+    id: 'campaign-strategy-planning',
+    title: 'Full-Funnel Campaign Strategy & Planning',
+    shortDescription: 'End-to-end promotional roadmaps that align paid channels, creative assets, and conversion mechanics.',
+    fullDescription: 'Successful marketing requires more than launching isolated ads. I develop holistic campaign plans that define offer architecture, customer journey stages from awareness to purchase, promotional calendars, budget allocation across channels, and key performance benchmarks.',
     benefits: [
-      'Clear 90-day operational roadmap with prioritized milestones',
-      'Unified messaging and positioning across all channels',
-      'Objective KPI benchmarks to measure true performance'
+      'A unified strategic blueprint before any budget is committed',
+      'Consistent messaging across every touchpoint the customer experiences',
+      'Risk mitigation through phased budget scaling milestones'
     ],
     deliverables: [
-      'Comprehensive Digital Marketing Blueprint',
-      'Funnel architecture & channel allocation model',
-      'Offer positioning and value proposition guidance',
-      'Milestone tracking and review schedule'
+      'Comprehensive campaign strategy document',
+      'Full-funnel customer journey blueprint',
+      'Channel budget allocation model (Top/Middle/Bottom of funnel)',
+      'Promotional calendar and seasonal campaign planning',
+      'KPI scorecard and scaling threshold guidelines'
     ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I would like to discuss a comprehensive Digital Marketing Strategy.',
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I would like to consult on Campaign Strategy & Planning.',
     iconName: 'Compass'
   },
   {
-    id: 'ad-creative-copywriting',
-    title: 'Ad Creative Planning and Copywriting',
-    shortDescription: 'High-converting ad angles, persuasive hooks, and tailored visual briefs that stop the scroll and drive clicks.',
-    fullDescription: 'Creative is the primary variable of advertising success. We craft compelling, benefit-focused ad copy variants and structured creative briefs for video and static formats that capture attention in high-velocity feeds.',
+    id: 'conversion-tracking-setup',
+    title: 'Conversion Tracking & Analytics Infrastructure',
+    shortDescription: 'Accurate measurement setup via Google Tag Manager, Meta Conversions API (CAPI), and GA4.',
+    fullDescription: 'Without accurate tracking, advertising platforms optimize blindly. I install and verify tracking foundations: Meta Pixel, server-side Conversions API (CAPI), Google Tag Manager containers, GA4 custom events, and e-commerce purchase parameters to ensure reliable data reporting.',
     benefits: [
-      'Higher click-through rates (CTR) and stronger audience engagement',
-      'Diverse angle testing (pain point, aspirational, proof-driven)',
-      'Clear visual briefs for graphic designers and video editors'
+      'Overcome iOS tracking limitations with robust server-side event capture',
+      'Train ad platform algorithms on genuine conversions rather than clicks',
+      'Eliminate duplicate event counting and attribution confusion'
     ],
     deliverables: [
-      'Multi-angle ad copy matrix (Hooks, Body copy, CTAs)',
-      'Visual creative storyboard briefs (Feeds, Stories, Reels)',
-      'Ad format specifications and copy character guidelines',
-      'A/B test framework for headline and messaging analysis'
+      'Meta Pixel and Conversions API (CAPI) server-side setup',
+      'Google Tag Manager (GTM) container configuration',
+      'GA4 event tracking (leads, purchases, form submissions)',
+      'UTM parameter taxonomy guide for campaign tracking',
+      'Tracking verification report confirming event match quality'
     ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I am looking for Ad Creative Planning and Copywriting support.',
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I need help setting up Conversion Tracking & Analytics.',
+    iconName: 'Settings'
+  },
+  {
+    id: 'ad-creative-strategy',
+    title: 'Ad Creative Strategy & Hook Testing',
+    shortDescription: 'Conversion-focused visual concepts, persuasive ad copywriting, and thumb-stopping hook testing.',
+    fullDescription: 'Creative is the primary lever of performance in modern digital advertising. I develop strategic creative briefs, compelling copywriting frameworks, and hook variation matrices designed to arrest scrolling, communicate clear value propositions, and inspire immediate action.',
+    benefits: [
+      'Systematic creative iteration that avoids production guesswork',
+      'Higher thumb-stop ratio and engagement rates on social feeds',
+      'Clear creative insights on what specific messaging angles resonate'
+    ],
+    deliverables: [
+      'Creative testing framework (3-second visual hooks, headlines, angles)',
+      'Ad copywriting packs (primary text, headlines, descriptions)',
+      'Visual creative briefing guidelines for designers / videographers',
+      'Creative performance analysis and iteration recommendations'
+    ],
+    whatsappMessage: 'Hi Mohidul Islam Sojib, I am interested in Ad Creative Strategy & Hook Testing.',
     iconName: 'PenTool'
-  },
-  {
-    id: 'campaign-performance-analysis',
-    title: 'Campaign Performance Analysis',
-    shortDescription: 'In-depth diagnostic audits of active advertising accounts to identify bottlenecks, waste, and scale opportunities.',
-    fullDescription: 'Gain unbiased clarity into why your campaigns are underperforming or where you can unlock higher efficiency. We audit account structure, ad fatigue, bidding strategies, and conversion drop-offs.',
-    benefits: [
-      'Identification of budget leakages and unproductive ad sets',
-      'Actionable recommendations prioritized by impact and effort',
-      'Unbiased performance evaluation without vendor bias'
-    ],
-    deliverables: [
-      'Comprehensive Account Health Audit Report',
-      'Metric breakdown (CPM, CTR, CPC, Conversion Rate, ROAS)',
-      'Immediate action checklist for fast performance lift',
-      '1-on-1 strategic walkthrough discussion'
-    ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I would like an audit and Campaign Performance Analysis for my ad accounts.',
-    iconName: 'BarChart3'
-  },
-  {
-    id: 'conversion-tracking-support',
-    title: 'Conversion Tracking Support',
-    shortDescription: 'Robust event tracking setup via Meta Pixel, Conversions API (CAPI), and Google Tag Manager.',
-    fullDescription: 'Modern digital advertising requires server-side attribution to withstand cookie deprecation and browser restrictions. We assist in configuring pixel events, server-side data feeds, and GTM containers.',
-    benefits: [
-      'Accurate conversion attribution for ad platform algorithms',
-      'Enhanced event match quality scores on Meta',
-      'Reliable data foundation for calculating true return on investment'
-    ],
-    deliverables: [
-      'Meta Pixel and Conversions API integration verification',
-      'Standard event configuration (ViewContent, AddToCart, Purchase, Lead)',
-      'Google Tag Manager event triggers setup',
-      'Event test validation and diagnostics check'
-    ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I need Conversion Tracking Support for my website and campaigns.',
-    iconName: 'Activity'
-  },
-  {
-    id: 'digital-brand-promotion',
-    title: 'Digital Brand Promotion',
-    shortDescription: 'Strategic multi-platform digital promotions that enhance brand recognition, credibility, and authority.',
-    fullDescription: 'Amplify your brand presence across social networks through carefully scheduled promotional pushes, engagement campaigns, and digital footprint expansion that positions your business as an industry frontrunner.',
-    benefits: [
-      'Sustained brand recall among target business demographics',
-      'Consistent brand tone of voice across digital channels',
-      'Synergy between brand awareness and performance conversions'
-    ],
-    deliverables: [
-      'Digital brand positioning and promotional calendar',
-      'Content distribution and paid amplification plan',
-      'Brand engagement campaign setup and monitoring',
-      'Audience sentiment and reach reports'
-    ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I want to discuss Digital Brand Promotion for my company.',
-    iconName: 'Megaphone'
-  },
-  {
-    id: 'marketing-workflow-automation',
-    title: 'Marketing Workflow Automation',
-    shortDescription: 'Smart automated workflows and AI-assisted processes to streamline campaign operations and reporting.',
-    fullDescription: 'Eliminate repetitive manual tasks. We implement streamlined workflows for automated reporting alerts, lead routing to your CRM/WhatsApp, and prompt-engineered frameworks for rapid ad iteration.',
-    benefits: [
-      'Instant lead notification to ensure rapid sales response',
-      'Hours saved every week on manual data compilation',
-      'Consistent operational rigor across campaign testing cycles'
-    ],
-    deliverables: [
-      'Automated lead notification routing (Email/Sheet/WhatsApp webhook)',
-      'Scheduled performance summary alert triggers',
-      'Creative briefing template automation',
-      'Operational workflow documentation'
-    ],
-    whatsappMessage: 'Hi Mohidul Islam Sojib, I am interested in Marketing Workflow Automation for my business.',
-    iconName: 'Cpu'
   }
 ];
 
 export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
   {
     id: 'meta-performance-ecommerce',
-    title: 'Performance Marketing Framework for Direct-to-Consumer Brand',
-    category: 'Meta Ads Campaigns',
-    objective: 'Restructure fragmented Meta advertising account to lower cost per purchase and scale daily spend profitably.',
-    strategy: 'Consolidated fractured ad sets into a unified CBO structure, deployed 3 distinct creative angles (Product Utility, User Demonstration, and Social Proof), and established an aggressive retargeting exclusion protocol to prevent budget cannibalization.',
+    title: 'Direct-to-Consumer E-Commerce Scaling Framework',
+    category: 'Meta Ads',
+    description: 'Structured Meta advertising ecosystem engineered to eliminate budget cannibalization, combat ad fatigue, and scale profitable purchase volume.',
+    objective: 'Restructure fragmented Meta advertising account to lower cost-per-acquisition (CPA) and sustainably scale daily ad spend.',
+    role: 'Lead Performance Strategist & Campaign Architect (Boosting Agency BD)',
+    tools: [
+      'Meta Ads Manager',
+      'Meta Conversions API (CAPI)',
+      'Google Tag Manager',
+      'Shopify Plus',
+      'Triple Whale',
+      'Looker Studio'
+    ],
+    strategy: 'Consolidated fractured ad sets into a unified Campaign Budget Optimization (CBO) and Advantage+ Shopping framework. Deployed 3 distinct creative angles (Product Utility, User Demonstration, and Social Proof), and established an aggressive 30-day/180-day purchaser exclusion protocol to prevent budget cannibalization.',
+    features: [
+      'Advantage+ Shopping Campaign Architecture',
+      'Meta Conversions API (CAPI) Server-Side Event Tracking',
+      '3-Tier Retargeting Exclusion & Budget Isolation Rules',
+      'Dynamic Product Ads (DPA) Catalog Setup with Custom Frames',
+      'Weekly Creative Hook Sprint Testing Protocol'
+    ],
     executionDetails: [
       'Audited past 90 days of ad data to isolate top-performing audiences and creative elements',
-      'Implemented Meta Conversions API (CAPI) to elevate Event Match Quality to 8.2/10',
-      'Structured broad demographic testing sets paired with high-intent Lookalikes',
+      'Implemented Meta Conversions API (CAPI) to elevate Event Match Quality to 8.2+/10',
+      'Structured broad demographic testing sets paired with high-intent Lookalikes (Top 1% Value-Based Buyers)',
       'Introduced dynamic product catalogs with custom promotional overlay frames'
     ],
     resultsNote: 'Resulted in stabilized weekly purchase volume, reduced CPM variance, and improved campaign stability during high-demand promotional weekends.',
@@ -412,14 +339,32 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Custom performance reporting dashboard'
     ],
     thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.webp',
-    featured: true
+    featured: true,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   },
   {
     id: 'google-ads-search-acquisition',
-    title: 'High-Intent Search Campaign Structure for B2B Services',
+    title: 'High-Intent Google Search & Inbound Lead Acquisition Engine',
     category: 'Google Ads',
+    description: 'Precision Google Search acquisition system capturing high-commercial intent search queries while actively filtering non-converting clicks.',
     objective: 'Generate qualified corporate inquiries by targeting high-commercial search queries while eliminating irrelevant clicks.',
+    role: 'Search Engine Marketing Lead & Inbound Funnel Strategist',
+    tools: [
+      'Google Ads',
+      'Google Tag Manager (GTM)',
+      'Google Analytics 4 (GA4)',
+      'Google Search Console',
+      'SEMrush',
+      'Looker Studio'
+    ],
     strategy: 'Segmented search intent into exact and phrase-match keyword clusters, created dedicated ad copy answering specific pain points, implemented extensive negative keyword filters, and integrated Google Tag Manager lead conversion tracking.',
+    features: [
+      'Single Theme Ad Group (STAG) Organization',
+      '250+ Negative Keyword Exclusion Hierarchy',
+      'Offline Conversion Import (OCI) & Value-Based Bidding',
+      'High-Relevance Responsive Search Ads (RSAs)',
+      'Enhanced Lead Form Conversion Tagging'
+    ],
     executionDetails: [
       'Conducted exhaustive search term audit identifying 250+ wasteful search triggers',
       'Organized campaigns into tightly themed ad groups (STAG) with responsive search ads',
@@ -434,14 +379,32 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'GTM lead form conversion tag configuration'
     ],
     thumbnail: '/images/portfolio/portfolio_google_search_1792339115890.webp',
-    featured: true
+    featured: true,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   },
   {
     id: 'ecommerce-multi-channel-funnel',
-    title: 'Full-Funnel Paid Acquisition Strategy for Retail Store',
+    title: 'Full-Funnel E-Commerce Growth Strategy & Store Funnel Architecture',
     category: 'E-commerce Marketing',
+    description: 'Integrated multi-channel paid acquisition strategy paired with store conversion rate optimization and shopping funnel enhancements.',
     objective: 'Build an integrated top-of-funnel discovery to bottom-of-funnel retargeting system across Meta and Google.',
+    role: 'E-Commerce Growth Consultant & Omnichannel Campaign Manager',
+    tools: [
+      'Shopify Plus',
+      'Meta Ads Manager',
+      'Google Performance Max (PMax)',
+      'Google Merchant Center',
+      'Klaviyo Email Automations',
+      'Hotjar Heatmaps'
+    ],
     strategy: 'Designed a multi-stage funnel where top-of-funnel video ads introduce key product benefits, middle-of-funnel carousel ads showcase user reviews, and bottom-of-funnel dynamic catalog ads re-engage abandoned cart visitors with targeted offers.',
+    features: [
+      'Multi-Touchpoint Customer Buying Journey Map',
+      'Google Performance Max Product Catalog Sync',
+      'Frictionless Mobile-First Shopping Experience & Cart Drawer',
+      'Automated Abandoned Cart Retargeting Sequences',
+      'Cross-Platform Frequency Capping to Prevent Ad Fatigue'
+    ],
     executionDetails: [
       'Mapped customer buying journey from cold discovery to post-purchase referral',
       'Synchronized Meta catalog ads with real-time inventory availability',
@@ -456,14 +419,32 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Bi-weekly performance audit and recommendations'
     ],
     thumbnail: '/images/portfolio/portfolio_ecommerce_growth_1792339116347.webp',
-    featured: true
+    featured: true,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   },
   {
     id: 'creative-testing-strategy',
-    title: 'Ad Creative Strategy & Hook Testing System',
-    category: 'Ad Creative Strategy',
+    title: 'Ad Creative Strategy, Visual Hook Testing & Message-Match Framework',
+    category: 'Campaign Strategy',
+    description: 'Scientific testing matrix designed to systematically identify winning visual hooks, storytelling formats, and persuasive copywriting angles.',
     objective: 'Establish a scientific creative testing framework to consistently identify winning visual hooks and copy formats.',
+    role: 'Creative Director & Campaign Strategist',
+    tools: [
+      'Meta Ads Manager',
+      'Figma',
+      'CapCut Pro',
+      'Foreplay Ad Swipefile',
+      'Google Sheets Matrix',
+      'Frame.io'
+    ],
     strategy: 'Developed a 3x3 testing matrix testing 3 distinct visual hooks against 3 distinct emotional angles, isolating variables to determine which combinations drove the highest 3-second hook retention and click-through rates.',
+    features: [
+      '3x3 Hook & Emotional Angle Testing Matrix',
+      'Thumb-Stop Ratio & Hold Rate Analysis Dashboard',
+      'Standardized 9:16 & 1:1 Mobile-First Storyboards',
+      'Fatigue Monitoring & Creative Sprint Rotation',
+      'Repeatable Brand Playbook with Winning Archetypes'
+    ],
     executionDetails: [
       'Created standardized video storyboard templates for mobile-first formats (9:16 and 1:1)',
       'Tested headline variations highlighting immediate benefit vs. fear of missing out',
@@ -478,14 +459,32 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Reusable creative production checklist'
     ],
     thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.webp',
-    featured: true
+    featured: true,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   },
   {
     id: 'social-brand-amplification',
-    title: 'Social Media Advertising & Brand Promotion Initiative',
+    title: 'Social Media Advertising & Brand Authority Amplification',
     category: 'Social Media Marketing',
+    description: 'Targeted video ad placements and community engagement campaigns designed to build brand authority and warm retargeting audiences.',
     objective: 'Enhance regional brand awareness and profile engagement through targeted video ad placements and community amplification.',
+    role: 'Social Media Advertising Strategist',
+    tools: [
+      'Meta Business Suite',
+      'Instagram Reels Ads',
+      'Facebook Ads',
+      'Canva Pro',
+      'CapCut',
+      'Sprout Social'
+    ],
     strategy: 'Executed targeted short-form video campaigns across Instagram and Facebook focused on high-value educational content, building warm retargeting custom audiences for downstream business inquiries.',
+    features: [
+      'Sponsored Reels & High-Retention Micro Video Distribution',
+      'Custom Engagement Pools (50%+ & 75% Watch Time)',
+      'Sequential Storytelling Ad Workflows',
+      'Active Feedback & Comment Sentiment Monitoring',
+      'Cross-Channel Brand Authority Alignment'
+    ],
     executionDetails: [
       'Identified top engaging content pillars and formatted them into sponsored reels',
       'Built custom engagement audiences based on 50%+ video watch duration',
@@ -500,14 +499,32 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Follow-up conversion campaign sequence'
     ],
     thumbnail: '/images/portfolio/portfolio_creative_strategy_1792339116351.webp',
-    featured: false
+    featured: false,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   },
   {
     id: 'digital-brand-growth-system',
-    title: 'Digital Brand Presence & Funnel Optimization',
-    category: 'Digital Brand Promotion',
+    title: 'Digital Brand Presence & Conversion Funnel Optimization',
+    category: 'Campaign Strategy',
+    description: 'Complete synchronization of paid media messaging with dedicated landing page value propositions and rapid inquiry routing.',
     objective: 'Elevate digital brand authority and optimize inbound inquiry conversion pathways across all web touchpoints.',
+    role: 'Digital Marketing Strategist & Conversion Optimization Lead',
+    tools: [
+      'Meta Ads Manager',
+      'Google Tag Manager',
+      'WhatsApp Business API',
+      'Google Analytics 4',
+      'Hotjar',
+      'Tailwind CSS'
+    ],
     strategy: 'Audited digital footprint, aligned paid ad messaging with landing page value propositions, and implemented rapid WhatsApp inquiry routing for high-intent visitors.',
+    features: [
+      'Message-Match Ad-to-Landing Page Funnel',
+      'Instant Mobile WhatsApp Inquiry Routing',
+      'Streamlined Lead Qualification Architecture',
+      'Transparent Expectation Setting & Trust Badges',
+      'Performance Reporting Dashboard Integration'
+    ],
     executionDetails: [
       'Synchronized ad copy headlines directly with landing page hero sections',
       'Implemented mobile-friendly instant WhatsApp inquiry links reducing contact friction',
@@ -522,7 +539,8 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
       'Brand consistency checklist'
     ],
     thumbnail: '/images/portfolio/portfolio_meta_performance_1792339114594.webp',
-    featured: false
+    featured: false,
+    liveUrl: 'https://mohidul-islam-sojib11.pages.dev/'
   }
 ];
 
@@ -535,31 +553,33 @@ export const WORKING_PROCESS: WorkingStep[] = [
   },
   {
     step: '02',
-    title: 'Audience & Funnel Architecture',
-    description: 'We define precise customer personas, segment buying intent, and map out the full-funnel structure from cold discovery to purchase.',
-    focusAreas: ['Customer avatar modeling', 'Cold vs. warm funnel tiers', 'Budget allocation plan']
+    title: 'Strategy & Campaign Architecture',
+    description: 'Developing a structured roadmap covering audience targeting, budget allocation, promotional offers, and creative specifications.',
+    focusAreas: ['Audience segmentation', 'Funnel mapping', 'Budget pacing model']
   },
   {
     step: '03',
-    title: 'Creative & Copy Strategy',
-    description: 'We formulate persuasive ad copy angles, compelling hooks, and clear visual briefs tailored to stop the scroll and encourage action.',
-    focusAreas: ['Hook & angle matrix', 'Mobile-first format planning', 'Value proposition clarity']
+    title: 'Technical Setup & Tracking',
+    description: 'Configuring conversion tracking, pixels, event parameters, and campaign infrastructure before any media spend begins.',
+    focusAreas: ['Pixel & CAPI verification', 'GA4 event setup', 'UTM parameter taxonomy']
   },
   {
     step: '04',
-    title: 'Technical Setup & Launch',
-    description: 'We configure campaign hierarchies, verify event tracking (Pixel, GTM, CAPI), and launch structured campaigns with controlled bidding parameters.',
-    focusAreas: ['Pixel & CAPI verification', 'Campaign hierarchy rollout', 'Initial testing schedule']
+    title: 'Launch, Testing & Optimization',
+    description: 'Systematic testing of ad creative, audiences, and placements followed by data-driven reallocation of budget toward winning assets.',
+    focusAreas: ['A/B creative testing', 'Bid strategy tuning', 'Negative audience filtering']
   },
   {
     step: '05',
-    title: 'Optimization & Reporting',
-    description: 'We monitor core metrics daily, prune underperforming ads, reallocate budget toward winning segments, and provide clear, transparent reporting.',
-    focusAreas: ['CPA & ROAS monitoring', 'Ad fatigue mitigation', 'Ongoing strategic consultation']
+    title: 'Reporting & Transparent Review',
+    description: 'Regular, honest reporting on campaign metrics, actual return on investment, and clear recommendations for subsequent growth phases.',
+    focusAreas: ['Metric analysis (ROAS, CPA, CTR)', 'Actionable insights', 'Scaling recommendations']
   }
 ];
 
 export const TRANSPARENCY_NOTICE = {
-  title: 'Professional Marketing Transparency',
-  description: 'In performance marketing, honest strategy always outperforms hype. I do not guarantee overnight riches, guaranteed ROAS multipliers, or unrealistic sales figures, because advertising success depends on product-market fit, pricing, market demand, and customer experience. What I deliver is rigorous strategy, disciplined execution, clean tracking, and relentless optimization.'
+  title: 'Commitment to Honest Marketing',
+  badge: 'Methodology Standards',
+  statement:
+    'Digital marketing outcomes depend on market demand, product quality, competitive pricing, and landing page conversion rates. While I apply rigorous analytical and creative methodologies, I do not promise unrealistic overnight results, guaranteed viral metrics, or fabricated revenue claims. Sustainable business growth is built on structured testing, disciplined budget stewardship, and continuous optimization.'
 };

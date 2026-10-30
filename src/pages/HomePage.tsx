@@ -25,6 +25,7 @@ import {
 import { createWhatsAppLink, createMailtoLink } from '../utils/whatsapp';
 import { ProjectModal } from '../components/ProjectModal';
 import { ProfileImage } from '../components/ProfileImage';
+import { PortfolioImage } from '../components/PortfolioImage';
 import { useLanguage } from '../context/LanguageContext';
 
 interface HomePageProps {
@@ -345,17 +346,15 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
                 className="group cursor-pointer rounded-2xl bg-[#111827] border border-white/5 hover:border-[#00D2FF]/30 transition-all overflow-hidden flex flex-col"
               >
                 <div className="relative aspect-video overflow-hidden bg-[#0D1117]">
-                  <img
+                  <PortfolioImage
                     src={project.thumbnail}
                     alt={title}
+                    category={category}
                     width={600}
                     height={338}
-                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent opacity-80 pointer-events-none" />
                   <div className="absolute top-4 left-4 text-xs font-medium text-[#00D2FF] bg-[#0B132B]/80 px-2.5 py-1 rounded-md border border-[#00D2FF]/20 backdrop-blur-sm">
                     {category}
                   </div>

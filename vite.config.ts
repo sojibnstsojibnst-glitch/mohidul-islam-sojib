@@ -77,6 +77,62 @@ export default defineConfig(() => {
             res.writeHead(405);
             res.end();
           });
+          server.middlewares.use('/api/save-portfolio-image', (req, res) => {
+            if (req.method === 'POST') {
+              let body = '';
+              req.on('data', (chunk) => {
+                body += chunk;
+              });
+              req.on('end', () => {
+                try {
+                  let dataUrl = '';
+                  let filename = `project_${Date.now()}`;
+                  try {
+                    const parsed = JSON.parse(body);
+                    dataUrl = parsed.dataUrl || body;
+                    if (parsed.filename) filename = parsed.filename;
+                  } catch {
+                    dataUrl = body;
+                  }
+
+                  const base64Data = dataUrl.replace(/^data:image\/\w+;base64,/, '');
+                  const buffer = Buffer.from(base64Data, 'base64');
+                  const targetDir = path.resolve('public/images/portfolio');
+                  if (!fs.existsSync(targetDir)) {
+                    fs.mkdirSync(targetDir, { recursive: true });
+                  }
+                  const safeFilename = filename.endsWith('.webp') || filename.endsWith('.jpg') || filename.endsWith('.png') ? filename : `${filename}.webp`;
+                  const filePath = path.join(targetDir, safeFilename);
+                  fs.writeFileSync(filePath, buffer);
+
+                  // Also sync to dist and disk if they exist
+                  for (const dir of ['dist', 'disk']) {
+                    const destDir = path.resolve(`${dir}/images/portfolio`);
+                    if (fs.existsSync(path.resolve(dir))) {
+                      if (!fs.existsSync(destDir)) {
+                        fs.mkdirSync(destDir, { recursive: true });
+                      }
+                      fs.writeFileSync(path.join(destDir, safeFilename), buffer);
+                    }
+                  }
+
+                  res.writeHead(200, { 'Content-Type': 'application/json' });
+                  res.end(
+                    JSON.stringify({
+                      success: true,
+                      path: `/images/portfolio/${safeFilename}`
+                    })
+                  );
+                } catch (err) {
+                  res.writeHead(500, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify({ success: false, error: String(err) }));
+                }
+              });
+              return;
+            }
+            res.writeHead(405);
+            res.end();
+          });
         }
       },
       {
